@@ -67,6 +67,16 @@ docker compose exec backend python seed_data.py
 
 ---
 
+## 🌐 Live Infrastructure
+
+The platform is deployed and fully operational on a high-performance, serverless stack:
+
+- **Frontend**: [tournasphere.vercel.app](https://tournasphere.vercel.app)
+- **Backend API**: [tournasphere-api.onrender.com](https://tournasphere-api.onrender.com)
+- **Database**: Neon PostgreSQL (High-Availability)
+
+---
+
 ## 📂 Project Anatomy
 
 ```text
