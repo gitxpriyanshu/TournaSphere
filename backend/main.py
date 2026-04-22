@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import uvicorn
+import os
 import logging
 from controllers.auth_controller import router as auth_router
 from controllers.tournament_controller import router as tournament_router
@@ -43,9 +44,12 @@ async def global_exception_handler(request: Request, exc: Exception):
         content={"detail": "An internal server error occurred.", "msg": str(exc)}
     )
 
+# CORS configuration
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://localhost:8000").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:8000"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
